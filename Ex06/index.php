@@ -8,7 +8,12 @@
 
     <?php
 
+    // on teste si le formulaire est vide
+
     if (empty($_GET['civility']) && empty($_GET['lastname']) && empty($_GET['firstname'])) {
+
+        // si il est vide on l'affiche
+
         ?>
         <form action="index.php" method="get">
 
@@ -28,14 +33,23 @@
 
             </form>
         <?php
+
+        // si il est remplis on affiche ses données
+
     } elseif (!empty($_GET['civility']) && !empty($_GET['lastname']) && !empty($_GET['firstname'])) {
 
+        // on stocke les données du formulaire dans des varaibles
+
         $civility = $_GET['civility'];
+        $lastname = $_GET['lastname'];
+        $firstname = $_GET['firstname'];
+
+        // on test la valeur du select et on assigne une string à $gender
 
         $civility  == 'male'? $gender = 'Mr.' : $gender = 'Mme';
 
-        $lastname = $_GET['lastname'];
-        $firstname = $_GET['firstname'];
+        // on affiche les données
+        
         echo 'Bonjour '.$gender.' '.$firstname.' '.$lastname;
         
     }

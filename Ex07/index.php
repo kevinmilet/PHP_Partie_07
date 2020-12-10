@@ -8,7 +8,12 @@
 
     <?php
 
+    // on teste si le formulaire est vide
+
     if (empty($_GET['civility']) && empty($_GET['lastname']) && empty($_GET['firstname'])) {
+
+        // si il est vide on affiche le formulaire
+
         ?>
         <form action="index.php" method="get">
 
@@ -31,16 +36,24 @@
 
             </form>
         <?php
+
+        // si le formulaire est rempli, on affiche ses données
+
     } elseif (!empty($_GET['civility']) && !empty($_GET['lastname']) && !empty($_GET['firstname'])) {
 
+         // on récupère les données du forulaire et on les stocke dans des variables
+
         $civility = $_GET['civility'];
-
-        $civility  == 'male'? $gender = 'Mr.' : $gender = 'Mme';
-
         $lastname = $_GET['lastname'];
         $firstname = $_GET['firstname'];
         $file = $_GET['file'];
-        
+
+        // pour le select, on teste la valeur et on assigne un genre
+
+        $civility  == 'male'? $gender = 'Mr.' : $gender = 'Mme';
+       
+        // on affiche les données du formulaire
+
         echo 'Bonjour '.$gender.' '.$firstname.' '.$lastname;
         echo '<br>';
         echo 'Votre fichier s\'appelle '.$file;
