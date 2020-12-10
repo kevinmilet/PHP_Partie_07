@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Partie 7 - Exercice 1</title>
+    <title>Partie 7 - Exercice 4</title>
 </head>
 <body>
 
-    <form action="user.php" method="get">
+    <form action="user.php" method="post">
         <label for="lastname">Nom: </label>
         <input type="text" id="lastname" name="lastname">
         <label for="firstname">Prénom: </label>
