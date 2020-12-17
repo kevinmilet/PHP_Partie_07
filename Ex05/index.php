@@ -1,3 +1,11 @@
+<!-- Créer un formulaire sur la page index.php avec :  
+Une liste déroulante pour la civilité (Mr ou Mme)
+Un champ texte pour le nom
+Un champ texte pour le prénom
+
+Ce formulaire doit rediriger vers la page index.php. 
+Vous avez le choix de la méthode.  -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +14,7 @@
 </head>
 <body>
 
-    <form action="index.php" method="get">
+    <form action="" method="get">
 
         <label for="civility">Civilité: </label>
         <select name="civility" id="civility">

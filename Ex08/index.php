@@ -1,3 +1,6 @@
+<!-- Sur le formulaire de l'exercice 6, en plus de ce qui est demandé sur les exercices précédent,
+vérifier que le fichier transmis est bien un fichier pdf. -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,12 +13,12 @@
 
     // on teste si le formulaire est vide
 
-    if (empty($_POST['civility']) && empty($_POST['lastname']) && empty($_POST['firstname']) && empty($_POST['file'])) {
+    if (empty($_POST['lastname']) && empty($_POST['firstname']) && empty($_FILES['file'])) {
 
         // si il est vide on affiche le formulaire
 
         ?>
-        <form action="index.php" method="post">
+        <form action="index.php" method="post" enctype="multipart/form-data">
 
                 <label for="civility">Civilité: </label>
                 <select name="civility" id="civility">
@@ -39,14 +42,14 @@
 
         // si le formulaire est rempli, on affiche ses données
 
-    } elseif (!empty($_POST['civility']) && !empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['file'])) {
+    } else {
 
         // on récupère les données du forulaire et on les stocke dans des variables
 
         $civility = $_POST['civility'];
         $lastname = $_POST['lastname'];
         $firstname = $_POST['firstname'];
-        $file = $_POST['file'];
+        $file = $_FILES['file'];
 
         // pour le select, on test la valeur du selecte on assigne un genre
 
@@ -54,7 +57,7 @@
 
         // on récupère l'extension du fichier envoyé
         
-        $fileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
+        $fileType = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
 
         // on affiche les données du formulaire
 
@@ -65,14 +68,7 @@
         // si oui on affiche le nom + l'extension
         // sinon on affiche une erreur
 
-        if ($fileType != 'pdf') {
-            echo 'Veuillez envoyer un fichier PDF!';
-        } else {
-            echo 'Votre fichier s\'appelle '.$file.' C\'est bien un fichier pdf.';
-        }
-
-        
-        
+        echo ($fileType != 'pdf') ? 'Veuillez envoyer un fichier PDF!' : 'Votre fichier s\'appelle '.$file['name'].' <br> C\'est bien un fichier pdf.';
     }
     ?>
     

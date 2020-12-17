@@ -1,3 +1,5 @@
+<!-- Avec le formulaire de l'exercice 1, afficher dans la page user.php les données du formulaire transmis. -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +7,7 @@
     <title>Partie 7 - Exercice 3</title>
 </head>
 <body>
-    <p>Bonjour <?php echo $_GET['firstname'] . ' ' . $_GET['lastname']?></p>
+    <p>Bonjour <?= $_GET['firstname'] . ' ' . $_GET['lastname']?></p>
     
 </body>
 </html>

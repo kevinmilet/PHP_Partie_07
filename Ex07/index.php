@@ -1,3 +1,6 @@
+<!-- Au formulaire de l'exercice 5, ajouter un champ d'envoi de fichier.
+Afficher en plus de ce qui est demandé à l'exercice 6, le nom et l'extension du fichier. -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,12 +13,12 @@
 
     // on teste si le formulaire est vide
 
-    if (empty($_GET['civility']) && empty($_GET['lastname']) && empty($_GET['firstname'])) {
+    if (empty($_POST['lastname']) && empty($_POST['firstname']) && empty($_FILES['file'])) {
 
         // si il est vide on affiche le formulaire
 
         ?>
-        <form action="index.php" method="get">
+        <form action="" method="post" enctype="multipart/form-data">
 
                 <label for="civility">Civilité: </label>
                 <select name="civility" id="civility">
@@ -39,24 +42,24 @@
 
         // si le formulaire est rempli, on affiche ses données
 
-    } elseif (!empty($_GET['civility']) && !empty($_GET['lastname']) && !empty($_GET['firstname'])) {
+    } else {
 
          // on récupère les données du forulaire et on les stocke dans des variables
 
-        $civility = $_GET['civility'];
-        $lastname = $_GET['lastname'];
-        $firstname = $_GET['firstname'];
-        $file = $_GET['file'];
-
+        $civility = $_POST['civility'];
+        $lastname = $_POST['lastname'];
+        $firstname = $_POST['firstname'];
+        $file = $_FILES['file'];
+        
         // pour le select, on teste la valeur et on assigne un genre
 
         $civility  == 'male'? $gender = 'Mr.' : $gender = 'Mme';
-       
+
         // on affiche les données du formulaire
 
         echo 'Bonjour '.$gender.' '.$firstname.' '.$lastname;
         echo '<br>';
-        echo 'Votre fichier s\'appelle '.$file;
+        echo 'Votre fichier s\'appelle '.$file['name'];
         
     }
     ?>

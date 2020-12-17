@@ -1,3 +1,6 @@
+<!-- Avec le formulaire de l'exercice 5, Si des données sont passées en POST ou en GET, le formulaire ne doit pas être affiché.
+Par contre les données transmises doivent l'être. Dans le cas contraire, c'est l'inverse.   -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +18,7 @@
         // si il est vide on l'affiche
 
         ?>
-        <form action="index.php" method="get">
+        <form action="" method="get">
 
                 <label for="civility">Civilité: </label>
                 <select name="civility" id="civility">
@@ -36,7 +39,7 @@
 
         // si il est remplis on affiche ses données
 
-    } elseif (!empty($_GET['civility']) && !empty($_GET['lastname']) && !empty($_GET['firstname'])) {
+    } else {
 
         // on stocke les données du formulaire dans des varaibles
 
@@ -44,7 +47,7 @@
         $lastname = $_GET['lastname'];
         $firstname = $_GET['firstname'];
 
-        // on test la valeur du select et on assigne une string à $gender
+        // on teste la valeur du select et on assigne une string à $gender
 
         $civility  == 'male'? $gender = 'Mr.' : $gender = 'Mme';
 
