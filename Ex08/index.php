@@ -11,6 +11,8 @@ vérifier que le fichier transmis est bien un fichier pdf. -->
 
     <?php
 
+    define('EXT', 'pdf');
+
     // on teste si le formulaire est vide
 
     if (empty($_POST['lastname']) && empty($_POST['firstname']) && empty($_FILES['file'])) {
@@ -18,6 +20,7 @@ vérifier que le fichier transmis est bien un fichier pdf. -->
         // si il est vide on affiche le formulaire
 
         ?>
+        
         <form action="index.php" method="post" enctype="multipart/form-data">
 
                 <label for="civility">Civilité: </label>
@@ -69,7 +72,7 @@ vérifier que le fichier transmis est bien un fichier pdf. -->
         // si oui on affiche le nom + l'extension
         // sinon on affiche une erreur
 
-        echo ($fileType != 'pdf') ? 'Veuillez envoyer un fichier PDF!' : 'Votre fichier s\'appelle '.$file.' <br> C\'est bien un fichier pdf.';
+        echo ($fileType != EXT) ? 'Veuillez envoyer un fichier PDF!' : 'Votre fichier s\'appelle '.$file.' <br> C\'est bien un fichier pdf.';
     }
     ?>
     
