@@ -49,7 +49,8 @@ vérifier que le fichier transmis est bien un fichier pdf. -->
         $civility = $_POST['civility'];
         $lastname = $_POST['lastname'];
         $firstname = $_POST['firstname'];
-        $file = $_FILES['file'];
+        $file = $_FILES['file']['name'];
+        var_dump($file);
 
         // pour le select, on test la valeur du selecte on assigne un genre
 
@@ -57,7 +58,7 @@ vérifier que le fichier transmis est bien un fichier pdf. -->
 
         // on récupère l'extension du fichier envoyé
         
-        $fileType = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
+        $fileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
 
         // on affiche les données du formulaire
 
@@ -68,7 +69,7 @@ vérifier que le fichier transmis est bien un fichier pdf. -->
         // si oui on affiche le nom + l'extension
         // sinon on affiche une erreur
 
-        echo ($fileType != 'pdf') ? 'Veuillez envoyer un fichier PDF!' : 'Votre fichier s\'appelle '.$file['name'].' <br> C\'est bien un fichier pdf.';
+        echo ($fileType != 'pdf') ? 'Veuillez envoyer un fichier PDF!' : 'Votre fichier s\'appelle '.$file.' <br> C\'est bien un fichier pdf.';
     }
     ?>
     
